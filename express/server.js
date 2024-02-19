@@ -6,6 +6,7 @@ const app = express();
 const path = require('path');
 const port = 3100;
 
+
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
 });
@@ -19,6 +20,7 @@ app.use(express.static(__dirname));
 
 app.post('/login', (req, res) => {
     const user = req.body;
+
 
 
 
@@ -55,5 +57,43 @@ app.get('/get-user/:username', (req, res) => {
 
         res.json(user);
     });
+});
+
+
+app.post('/save-petition', (req, res) => {
+    const filePath = path.join(__dirname, '..', 'jsons', 'petitions.json');
+    const petitionData = req.body;
+
+    if (!fs.existsSync(filePath)) {
+        fs.writeFileSync(filePath, '[]');
+    }
+
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        let petitions = [];
+
+        if (!err) {
+            try {
+                petitions = JSON.parse(data);
+            } catch (parseError) {
+                console.error('Error parsing petitions JSON:', parseError);
+                return res.status(500).send(parseError.message);
+            }
+        }
+
+        petitions.push(petitionData);
+
+        fs.writeFile(filePath, JSON.stringify(petitions, null, 2), 'utf8', err => {
+            if (err) {
+                console.error('Error writing to petitions JSON file:', err);
+                return res.status(500).send(err.message);
+            }
+            res.json({ message: 'Petition successfully saved' });
+        });
+    });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 

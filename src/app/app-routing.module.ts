@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { PetandreclComponent } from './petandrecl/petandrecl.component';
 import { LoginComponent } from './login/login.component';
 import { CitizenComponent } from './citizen/citizen.component';
 import { PromoterComponent } from './promoter/promoter.component';
@@ -14,8 +14,9 @@ const routes: Routes = [
   { path: 'promoter', component: PromoterComponent },
   { path: 'entity', component: EntityComponent },
   { path: 'admin', component:  AdminComponent },
-];
+  {path: 'petandrecl', component: PetandreclComponent}
 
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

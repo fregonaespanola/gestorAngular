@@ -39,4 +39,15 @@ app.post('/login', (req, res) => {
         res.send(foundUser);
     });
 });
+app.get('/get-data', (req, res) => {
+    const filePath = path.join(__dirname, '..', 'jsons', 'data.json');
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading JSON file:', err);
+            return res.status(500).send(err.message);
+        }
+        res.json(JSON.parse(data));
+    });
+});
+
 

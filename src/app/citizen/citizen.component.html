@@ -1,1 +1,19 @@
-<p>citizen works!</p>
+<h1>Welcome, {{ user.name }} {{ user.surname }}</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Promoter</th>
+      <th>Entity</th>
+      <th>Total</th>
+      <th>Monthly Report</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+      <td>{{ item.promoter }}</td>
+      <td>{{ item.entity }}</td>
+      <td>{{ item.total }}</td>
+      <td>{{ item.monthly_report }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -16,6 +16,7 @@ export class LoginComponent {
     this.appService.login(this.user).subscribe((data: User) => {
       if (data) {
         if (data.role === 'citizen') {
+          localStorage.setItem('username', data.username);
           this.router.navigate(['/citizen']);
         }
       }

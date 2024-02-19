@@ -1,38 +1,30 @@
-import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { CitizenData } from '../classes/citizen-data';
+import { AppService } from '../app.service';
+import { Router } from '@angular/router';
 
-interface CitizenData {
-  name: string;
-  surname: string;
-  promoter: string;
-  entity: string;
-  total: string;
-  monthly_report: string;
-}
+
 
 @Component({
   selector: 'app-citizen',
   templateUrl: './citizen.component.html',
   styleUrls: ['./citizen.component.css']
 })
-export class CitizenComponent implements OnInit {
-  user: { name: string, surname: string };
-  data: CitizenData[];
 
-  constructor(private http: HttpClient) {}
+export class CitizenComponent implements OnInit {
+  data: CitizenData=new CitizenData();
+
+  constructor(private appService: AppService, private router: Router) { }
 
   ngOnInit() {
-    // Simular inicio de sesión y obtención de datos del usuario
-    this.user = { name: 'Daniel', surname: 'Garcia' };
+    let username = localStorage.getItem('username');
 
-    // Obtener datos del servidor
-    this.http.get<CitizenData[]>('http://localhost:3000/get-data').subscribe(
-      data => {
-        this.data = data;
-      },
-      error => {
-        console.error('Error fetching data:', error);
-      }
-    );
+    if (username) {
+      this.appService.getUser(username).subscribe(
+        (data: CitizenData) => {
+          this.data = data;
+        });
+    }
   }
 }

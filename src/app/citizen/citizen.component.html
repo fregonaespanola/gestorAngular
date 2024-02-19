@@ -1,4 +1,4 @@
-<h1>Welcome, {{ user.name }} {{ user.surname }}</h1>
+<h1>Welcome, {{ data.name }} {{ data.surname }}</h1>
 <table>
   <thead>
     <tr>
@@ -9,11 +9,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of data">
-      <td>{{ item.promoter }}</td>
-      <td>{{ item.entity }}</td>
-      <td>{{ item.total }}</td>
-      <td>{{ item.monthly_report }}</td>
+    <tr >
+      <td>{{ data.promoter }}</td>
+      <td>{{ data.entity }}</td>
+      <td>{{ data.total }}</td>
+      <td>{{ data.monthly_report }}</td>
     </tr>
   </tbody>
 </table>

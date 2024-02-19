@@ -1,6 +1,7 @@
 [
     {
         "name": "Daniel",
+        "username": "ee",
         "surname": "Garcia",
         "promoter": "Empresa",
         "entity":"BBA",
@@ -9,6 +10,15 @@
     },
     {
         "name": "Daniel",
+        "username": "esdse",
+        "surname": "Garcia",
+        "promoter": "Empresa",
+        "entity":"BBA",
+        "total": "300",
+        "monthly_report": "600"
+    },    {
+        "name": "Paco",
+        "username": "esse",
         "surname": "Garcia",
         "promoter": "Empresa",
         "entity":"BBA",

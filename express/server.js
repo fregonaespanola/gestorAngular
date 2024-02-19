@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const cors = require('cors');
 const app = express();
-
+const path = require('path');
 const port = 3100;
 
 app.listen(port, () => {
@@ -20,7 +20,7 @@ app.use(express.static(__dirname));
 app.post('/login', (req, res) => {
     const user = req.body;
 
-    const path = require('path');
+
 
     fs.readFile(path.join(__dirname, '..', 'jsons', 'users.json'), 'utf8', (err, data) => {
         if (err) {
@@ -39,15 +39,21 @@ app.post('/login', (req, res) => {
         res.send(foundUser);
     });
 });
-app.get('/get-data', (req, res) => {
-    const filePath = path.join(__dirname, '..', 'jsons', 'data.json');
-    fs.readFile(filePath, 'utf8', (err, data) => {
+app.get('/get-user/:username', (req, res) => {
+    fs.readFile(path.join(__dirname, '..', 'jsons', 'data.json'), 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading JSON file:', err);
             return res.status(500).send(err.message);
         }
-        res.json(JSON.parse(data));
+
+        const users = JSON.parse(data);
+        const user = users.find(u => u.username === req.params.username);
+
+        if (!user) {
+            return res.status(404).send('User not found');
+        }
+
+        res.json(user);
     });
 });
-
 

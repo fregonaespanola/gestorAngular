@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router'; // Importa el módulo Router
+import { Router } from '@angular/router';
+import { FormData } from '../classes/FormData';
 
-interface FormData {
-  name: string;
-  subject: string;
-  request: string;
-}
 
 @Component({
   selector: 'app-petandrecl',
@@ -20,7 +16,7 @@ export class PetandreclComponent {
     request: ''
   };
 
-  constructor(private http: HttpClient, private router: Router) {} // Inyecta el módulo Router
+  constructor(private http: HttpClient, private router: Router) {}
 
   submitForm() {
     this.http.post<any>('http://localhost:3000/save-petition', this.formData).subscribe(

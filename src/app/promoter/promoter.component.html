@@ -1,1 +1,20 @@
-<p>promoter works!</p>
+<h1>Welcome, {{ username}}</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Promoter</th>
+      <th>Entity</th>
+      <th>Total</th>
+      <th>Monthly Report</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+      <td>{{ item.name}} {{ item.surname }}</td>
+      <td>{{ item.entity }}</td>
+      <td>{{ item.total }}</td>
+      <td>{{ item.monthly_report }}</td>
+    </tr>
+  </tbody>
+</table>
+

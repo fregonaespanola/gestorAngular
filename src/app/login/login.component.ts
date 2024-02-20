@@ -19,6 +19,14 @@ export class LoginComponent {
           localStorage.setItem('username', data.username);
           this.router.navigate(['/citizen']);
         }
+        if (data.role === 'promoter') {
+          localStorage.setItem('username', data.username);
+          this.router.navigate(['/promoter']);
+        }
+        if (data.role === 'entity') {
+          localStorage.setItem('username', data.username);
+          this.router.navigate(['/entity']);
+        }
       }
     });
   }

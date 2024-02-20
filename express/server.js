@@ -58,8 +58,40 @@ app.get('/get-user/:username', (req, res) => {
         res.json(matchingUsers);
     });
 });
+app.get('/get-user-promoter/:username', (req, res) => {
+    fs.readFile(path.join(__dirname, '..', 'jsons', 'data.json'), 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading JSON file:', err);
+            return res.status(500).send(err.message);
+        }
 
+        const users = JSON.parse(data);
+        const matchingUsers = users.filter(u => u.promoter === req.params.username);
 
+        if (matchingUsers.length === 0) {
+            return res.status(404).send('User not found');
+        }
+
+        res.json(matchingUsers);
+    });
+});
+app.get('/get-user-entity/:username', (req, res) => {
+    fs.readFile(path.join(__dirname, '..', 'jsons', 'data.json'), 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading JSON file:', err);
+            return res.status(500).send(err.message);
+        }
+
+        const users = JSON.parse(data);
+        const matchingUsers = users.filter(u => u.entity === req.params.username);
+
+        if (matchingUsers.length === 0) {
+            return res.status(404).send('User not found');
+        }
+
+        res.json(matchingUsers);
+    });
+});
 app.post('/save-petition', (req, res) => {
     const filePath = path.join(__dirname, '..', 'jsons', 'petitions.json');
     const petitionData = req.body;

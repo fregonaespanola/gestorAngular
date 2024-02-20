@@ -3,5 +3,13 @@
         "username": "ee",
         "password": "ee",
         "role": "citizen"
+    },{
+        "username": "Empresa",
+        "password": "ee",
+        "role": "promoter"
+    },{
+        "username": "BBA",
+        "password": "ee",
+        "role": "entity"
     }
 ]

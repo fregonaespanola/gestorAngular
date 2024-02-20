@@ -10,6 +10,7 @@ import { CitizenData } from './classes/citizen-data';
   providedIn: 'root'
 })
 export class AppService {
+
   private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
   login(user: User) {
@@ -18,6 +19,10 @@ export class AppService {
     getUser(username: string): Observable<CitizenData[]> {
       return this.http.get<CitizenData[]>(`${this.apiUrl}/get-user/${username}`);
     }
-
-
+    getUserByPromoter(username: string): Observable<CitizenData[]> {
+      return this.http.get<CitizenData[]>(`${this.apiUrl}/get-user-promoter/${username}`);
+    }
+    getUserByEntity(username: string): Observable<CitizenData[]> {
+      return this.http.get<CitizenData[]>(`${this.apiUrl}/get-user-entity/${username}`);
+    }
 }

@@ -13,16 +13,17 @@ import { Router } from '@angular/router';
 })
 
 export class CitizenComponent implements OnInit {
-  data: CitizenData=new CitizenData();
+  data: CitizenData[] = [];
 
-  constructor(private appService: AppService, private router: Router) { }
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
     let username = localStorage.getItem('username');
 
     if (username) {
       this.appService.getUser(username).subscribe(
-        (data: CitizenData) => {
+        (data: CitizenData[]) => {
+          console.log(data);
           this.data = data;
         });
     }

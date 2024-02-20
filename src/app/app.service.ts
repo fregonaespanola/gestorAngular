@@ -15,8 +15,8 @@ export class AppService {
   login(user: User) {
     return this.http.post<any>(`${this.apiUrl}/login`, user);}
     
-    getUser(username: string): Observable<CitizenData> {
-      return this.http.get<CitizenData>(`${this.apiUrl}/get-user/${username}`);
+    getUser(username: string): Observable<CitizenData[]> {
+      return this.http.get<CitizenData[]>(`${this.apiUrl}/get-user/${username}`);
     }
 
 

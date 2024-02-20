@@ -49,13 +49,13 @@ app.get('/get-user/:username', (req, res) => {
         }
 
         const users = JSON.parse(data);
-        const user = users.find(u => u.username === req.params.username);
+        const matchingUsers = users.filter(u => u.username === req.params.username);
 
-        if (!user) {
+        if (matchingUsers.length === 0) {
             return res.status(404).send('User not found');
         }
 
-        res.json(user);
+        res.json(matchingUsers);
     });
 });
 

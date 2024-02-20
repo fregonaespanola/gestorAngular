@@ -124,6 +124,61 @@ app.post('/save-petition', (req, res) => {
     });
 });
 
+app.post('/add-register', (req, res) => {
+    const filePath = path.join(__dirname, '..', 'jsons', 'data.json');
+    const petitionData = req.body;
+
+    if (!fs.existsSync(filePath)) {
+        fs.writeFileSync(filePath, '[]');
+    }
+
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading data JSON file:', err);
+            return res.status(500).send(err.message);
+        }
+
+        let dataJson = [];
+
+        try {
+            dataJson = JSON.parse(data);
+        } catch (parseError) {
+            console.error('Error parsing data JSON:', parseError);
+            return res.status(500).send(parseError.message);
+        }
+
+        const filteredData = dataJson.filter(item => item.username === petitionData.username);
+
+        if (filteredData.length === 0) {
+            return res.status(404).send('No hay registros para el username especificado');
+        }
+
+        const lastRecord = filteredData[filteredData.length - 1];
+
+        // Construir el nuevo registro con los datos del último registro del mismo username
+        const newRecord = {
+            name: lastRecord.name,
+            username: petitionData.username,
+            surname: lastRecord.surname,
+            promoter: petitionData.promoter,
+            entity: petitionData.entity,
+            total: (parseInt(lastRecord.total) + parseInt(petitionData.monthly_report)).toString(), // Convertir la suma a string
+            monthly_report: petitionData.monthly_report
+        };        
+
+        dataJson.push(newRecord);
+
+        fs.writeFile(filePath, JSON.stringify(dataJson, null, 2), 'utf8', err => {
+            if (err) {
+                console.error('Error writing to data JSON file:', err);
+                return res.status(500).send(err.message);
+            }
+            res.json({ message: 'Petition successfully saved' });
+        });
+    });
+});
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

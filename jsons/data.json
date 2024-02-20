@@ -1,28 +1,47 @@
 [
-    {
-        "name": "Daniel",
-        "username": "ee",
-        "surname": "Garcia",
-        "promoter": "Empresa",
-        "entity":"BBA",
-        "total": "300",
-        "monthly_report": "300"
-    },
-    {
-        "name": "Daniel",
-        "username": "ee",
-        "surname": "Garcia",
-        "promoter": "Empresdfa",
-        "entity":"BBA",
-        "total": "300",
-        "monthly_report": "600"
-    },    {
-        "name": "Paco",
-        "username": "esse",
-        "surname": "Garcia",
-        "promoter": "Empresa",
-        "entity":"BBA",
-        "total": "300",
-        "monthly_report": "600"
-    }
+  {
+    "name": "Daniel",
+    "username": "ee",
+    "surname": "Garcia",
+    "promoter": "Empresa",
+    "entity": "BBA",
+    "total": "300",
+    "monthly_report": "300"
+  },
+  {
+    "name": "Daniel",
+    "username": "ee",
+    "surname": "Garcia",
+    "promoter": "Empresdfa",
+    "entity": "BBA",
+    "total": "300",
+    "monthly_report": "600"
+  },
+  {
+    "name": "Paco",
+    "username": "esse",
+    "surname": "Garcia",
+    "promoter": "Empresa",
+    "entity": "BBA",
+    "total": "600",
+    "monthly_report": "300"
+  },
+  {
+    "name": "Paco",
+    "username": "esse",
+    "surname": "Garcia",
+    "promoter": "Empresa",
+    "entity": "BBA",
+    "total": "1000",
+    "monthly_report": "400"
+  },
+  {
+    "name": "Paco",
+    "username": "esse",
+    "surname": "Garcia",
+    "promoter": "Empresa",
+    "entity": "BBA",
+    "total": "1500",
+    "monthly_report": "500"
+  }
 ]

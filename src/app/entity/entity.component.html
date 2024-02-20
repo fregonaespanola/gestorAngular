@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let item of data">
-      <td>{{ item.name}} {{ item.surname }}</td>
+      <td>{{ item.username }}</td>
       <td>{{ item.promoter }}</td>
       <td>{{ item.total }}</td>
       <td>{{ item.monthly_report }}</td>
@@ -18,3 +18,20 @@
   </tbody>
 </table>
 
+<button (click)="abrirRegistro()">Botón</button>
+
+<form (ngSubmit)="aniadirRegistro()">
+  <div>
+    <label for="usuario">Usuario:</label>
+    <input type="text" [(ngModel)]="addRegister.username"  name="usuario">
+  </div>
+  <div>
+    <label for="promotor">Promotor:</label>
+    <input type="text" [(ngModel)]="addRegister.promoter"  name="promotor">
+  </div>
+  <div>
+    <label for="aportacion">Aportación:</label>
+    <input type="text" [(ngModel)]="addRegister.monthly_report"  name="aportacion">
+  </div>
+  <button type="submit">Guardar</button>
+</form>

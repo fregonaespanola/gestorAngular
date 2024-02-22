@@ -162,6 +162,7 @@ app.post('/add-register', (req, res) => {
             surname: lastRecord.surname,
             promoter: petitionData.promoter,
             entity: petitionData.entity,
+            month: petitionData.month,
             total: (parseInt(lastRecord.total) + parseInt(petitionData.monthly_report)).toString(), // Convertir la suma a string
             monthly_report: petitionData.monthly_report
         };        

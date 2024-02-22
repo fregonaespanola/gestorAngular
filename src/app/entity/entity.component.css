@@ -1,0 +1,119 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+
+  .container h1 {
+    width: 50%;
+    text-align: center;
+    background-color: #D094FF;
+  }
+  
+  .container h2{
+    width: 50%;
+    text-align: center;
+    background-color: #FFA3A3;
+    color: #343434;
+    margin-top: -23px;
+  }
+
+  .container h3{
+    width: 50%;
+    text-align: center;
+    background-color: #FF6969;
+    font-size: 25px;
+    margin-bottom: -1px;
+  }
+
+  .container table {
+    width: 50%;
+    border-collapse: collapse;
+  }
+  
+  .container th, .container td {
+    padding: 8px;
+    text-align: left;
+  }
+
+  tr th{
+    background-color: #FFCECE;
+  }
+
+  tr td{
+    background-color: #A1C7FF;
+    border-top: 5px solid white;
+  }
+
+  .form{
+    width: 50%;
+    
+  }
+
+  form .formh1{
+    width: auto;
+    background: #74FF92;
+    margin-bottom: -1px;
+  }
+
+  .formcolor{
+    background-color: #D2FFD1;
+    padding-bottom: 20px;
+  }
+  .form-in {
+    display: flex;
+    flex-direction: row;
+   
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .label {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .input {
+    flex: 2;
+  }
+  
+  .button-row {
+    display: flex;
+    justify-content: center;
+  }
+
+  .formcolor button{
+    margin-left: auto;
+    margin-right: 20px;
+    display: block;
+    margin-top: 20px;
+    background-color: #47FF4F;
+    border: 3px solid #05E700;
+    width: 100px;
+    height: 40px;
+    color: black;
+    border: none;
+    font-size: 20px;
+  }
+
+  .mostrar{
+    position: absolute;
+    margin-right: -53%;
+    margin-top: -10%;
+    background-color: #D2FFD1;
+    width: 50px;
+    height: 50px;
+    color: black;
+    border: none;
+    font-size: 40px;
+  }

@@ -1,20 +1,23 @@
-<h1>Welcome, {{ username}}</h1>
+<div class="container">
+  <h1>Plataforma Digital de Consulta</h1>
+  <h2>Promotor: {{ username }}</h2>
+  <h3>Aportaciones mensuales</h3>
 <table>
   <thead>
     <tr>
-      <th>Promoter</th>
-      <th>Entity</th>
-      <th>Total</th>
-      <th>Monthly Report</th>
+      <th>Usuario</th>
+      <th>Entidad Financiera</th>
+      <th>Mes</th>
+      <th>Aportación</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of data">
       <td>{{ item.name}} {{ item.surname }}</td>
       <td>{{ item.entity }}</td>
-      <td>{{ item.total }}</td>
+      <td>{{ item.month }}</td>
       <td>{{ item.monthly_report }}</td>
     </tr>
   </tbody>
 </table>
-
+</div>

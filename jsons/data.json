@@ -15,7 +15,7 @@
     "surname": "Garcia",
     "promoter": "Empresdfa",
     "entity": "BBA",
-    "month":"Febrero",
+    "month": "Febrero",
     "total": "300",
     "monthly_report": "600"
   },
@@ -45,7 +45,18 @@
     "surname": "Garcia",
     "promoter": "Empresa",
     "entity": "BBA",
+    "month": "Marzo",
     "total": "1500",
+    "monthly_report": "500"
+  },
+  {
+    "name": "Daniel",
+    "username": "ee",
+    "surname": "Garcia",
+    "promoter": "Empresa",
+    "entity": "BBA",
+    "month": "Marzo",
+    "total": "800",
     "monthly_report": "500"
   }
 ]

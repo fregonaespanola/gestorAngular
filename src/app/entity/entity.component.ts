@@ -14,6 +14,7 @@ export class EntityComponent{
   data: CitizenData[] = [];
   username: string = '';
   addRegister: AddRegister= new AddRegister();
+  showForm: boolean = false;
 
   constructor(private appService: AppService, private http: HttpClient) { }
 
@@ -43,8 +44,8 @@ export class EntityComponent{
       });
   }
 
-  abrirRegistro() {
-    // Lógica para abrir el registro
-  }
+  toggleFormVisibility() {
+    this.showForm = !this.showForm;
+}
 }
 

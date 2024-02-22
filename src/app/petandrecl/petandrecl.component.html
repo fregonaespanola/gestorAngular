@@ -1,16 +1,18 @@
-<form (ngSubmit)="submitForm()" #petitionForm="ngForm">
-    <div class="form-group">
-      <label for="name">Nombre:</label>
-      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="formData.name" required>
-    </div>
-    <div class="form-group">
-      <label for="subject">Asunto:</label>
-      <input type="text" class="form-control" id="subject" name="subject" [(ngModel)]="formData.subject" required>
-    </div>
-    <div class="form-group">
-      <label for="request">Petición:</label>
-      <textarea class="form-control" id="request" name="request" rows="5" [(ngModel)]="formData.request" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
-  </form>
-  
+<div class="container">
+  <h2 class="form-title">Peticiones y Reclamaciones</h2>
+  <form class="form" (ngSubmit)="submitForm()" #petitionForm="ngForm">
+      <div class="form-group">
+        <label for="name">Nombre:</label><br>
+        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="formData.name" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Asunto:</label><br>
+        <input type="text" class="form-control" id="subject" name="subject" [(ngModel)]="formData.subject" required>
+      </div>
+      <div class="form-group">
+        <label for="request">Petición:</label><br>
+        <textarea class="form-control" id="request" name="request" rows="5" [(ngModel)]="formData.request" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>

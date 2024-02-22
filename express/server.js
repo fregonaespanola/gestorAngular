@@ -160,24 +160,25 @@ app.post('/add-register', (req, res) => {
             console.error('Error parsing data JSON:', parseError);
             return res.status(500).send(parseError.message);
         }
-
         const filteredData = dataJson.filter(item => item.username === petitionData.username);
 
         if (filteredData.length === 0) {
             return res.status(404).send('No hay registros para el username especificado');
         }
 
+        const lastId = dataJson.length > 0 ? dataJson[dataJson.length - 1].id : 0;
+        const newId = lastId + 1;
         const lastRecord = filteredData[filteredData.length - 1];
 
-        // Construir el nuevo registro con los datos del último registro del mismo username
         const newRecord = {
+            id: newId,
             name: lastRecord.name,
             username: petitionData.username,
             surname: lastRecord.surname,
             promoter: petitionData.promoter,
             entity: petitionData.entity,
             month: petitionData.month,
-            total: (parseInt(lastRecord.total) + parseInt(petitionData.monthly_report)).toString(), // Convertir la suma a string
+            total: (parseInt(lastRecord.total) + parseInt(petitionData.monthly_report)).toString(),
             monthly_report: petitionData.monthly_report
         };        
 
@@ -207,7 +208,7 @@ app.put('/update-register', (req, res) => {
       const index = registers.findIndex(register => register.id === updatedRegister.id);
       if (index !== -1) {
         const act = {
-            name: registers[index].name,
+            name: updatedRegister.id,
             username: updatedRegister.username,
             surname: registers[index].surname,
             promoter: updatedRegister.promoter,
@@ -216,22 +217,18 @@ app.put('/update-register', (req, res) => {
             total: (parseInt(registers[index].total) - parseInt(registers[index].monthly_report)  + parseInt(updatedRegister.monthly_report)).toString(), // Convertir la suma a string
             monthly_report: updatedRegister.monthly_report
         }; 
-        console.log(act.total);
         registers[index] = act;
   
-        const updatedTotal = parseInt(registers[index].total);
+        var updatedTotal = parseInt(registers[index].total);
 
-        console.log(updatedTotal)
-
-            /*// Iterar sobre todos los registros y actualizar los totales si el nombre de usuario coincide
             registers.forEach((record, idx) => {
                 if (record.username === updatedRegister.username && parseInt(record.total) > updatedTotal) {
                     console.log("entra "+record.month)
-                    // Calcular el nuevo total
-                    const newTotal = parseInt(record.total) - parseInt(record.monthly_report) + updatedTotal;
+                    const newTotal = parseInt(record.monthly_report) + updatedTotal;
+                    updatedTotal = newTotal;
                     registers[idx].total = newTotal.toString();
                 }
-            });*/
+            });
 
         fs.writeFile(path.join(__dirname, '..', 'jsons', 'data.json'), JSON.stringify(registers, null, 2), 'utf8', err => {
           if (err) {

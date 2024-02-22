@@ -1,4 +1,5 @@
 export class CitizenData {
+    id: number;
     name: string;
     username: string;
     surname: string;

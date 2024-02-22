@@ -4,6 +4,7 @@ export class CitizenData {
     surname: string;
     promoter: string;
     entity: string;
+    month: string;
     total: string;
     monthly_report: string;
     constructor() {

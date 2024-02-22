@@ -1,19 +1,23 @@
-<h1>Welcome, {{ data[0].name }} {{ data[0].surname }}</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Promoter</th>
-      <th>Entity</th>
-      <th>Total</th>
-      <th>Monthly Report</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of data">
-      <td>{{ item.promoter }}</td>
-      <td>{{ item.entity }}</td>
-      <td>{{ item.total }}</td>
-      <td>{{ item.monthly_report }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <h1>Plataforma Digital de Consulta</h1>
+  <h2>Ciudadano: {{ data[0].name }} {{ data[0].surname }}</h2>
+  <h3>Aportaciones mensuales/totales</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Entidad</th>
+        <th>Mes</th>
+        <th>Aportación</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.entity }}</td>
+        <td>{{ item.month }}</td>
+        <td>{{ item.monthly_report }}</td>
+        <td>{{ item.total }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,50 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Esto centra verticalmente en toda la altura de la ventana */
+  }
+  
+
+  .container h1 {
+    width: 50%;
+    text-align: center;
+    background-color: #FFCFCF;
+  }
+  
+  .container h2{
+    width: 50%;
+    text-align: center;
+    background-color: #FFA3A3;
+    color: #343434;
+    margin-top: -23px;
+  }
+
+  .container h3{
+    width: 50%;
+    text-align: center;
+    background-color: #FF6969;
+    font-size: 25px;
+    margin-bottom: -1px;
+  }
+
+  .container table {
+    width: 50%;
+    border-collapse: collapse;
+  }
+  
+  .container th, .container td {
+    padding: 8px;
+    text-align: left;
+  }
+
+  tr th{
+    background-color: #FFCECE;
+  }
+
+  tr td{
+    background-color: #A1C7FF;
+    border-top: 5px solid white;
+  }

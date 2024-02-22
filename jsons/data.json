@@ -5,6 +5,7 @@
     "surname": "Garcia",
     "promoter": "Empresa",
     "entity": "BBA",
+    "month": "Enero",
     "total": "300",
     "monthly_report": "300"
   },
@@ -14,6 +15,7 @@
     "surname": "Garcia",
     "promoter": "Empresdfa",
     "entity": "BBA",
+    "month":"Febrero",
     "total": "300",
     "monthly_report": "600"
   },
@@ -23,6 +25,7 @@
     "surname": "Garcia",
     "promoter": "Empresa",
     "entity": "BBA",
+    "month": "Enero",
     "total": "600",
     "monthly_report": "300"
   },
@@ -32,6 +35,7 @@
     "surname": "Garcia",
     "promoter": "Empresa",
     "entity": "BBA",
+    "month": "Febrero",
     "total": "1000",
     "monthly_report": "400"
   },

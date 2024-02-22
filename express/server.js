@@ -243,6 +243,35 @@ app.put('/update-register', (req, res) => {
       }
     });
 });
+
+app.delete('/delete-register/:id', (req, res) => {
+    const idToDelete = req.params.id;
+    
+    fs.readFile(path.join(__dirname, '..', 'jsons', 'data.json'), 'utf8', (err, data) => {
+      if (err) {
+        console.error('Error reading JSON file:', err);
+        return res.status(500).send(err.message);
+      }
+  
+      let registers = JSON.parse(data);
+      
+      const indexToDelete = registers.findIndex(register => register.id === parseInt(idToDelete));
+      if (indexToDelete !== -1) {
+        registers.splice(indexToDelete, 1);
+  
+        fs.writeFile(path.join(__dirname, '..', 'jsons', 'data.json'), JSON.stringify(registers, null, 2), 'utf8', err => {
+          if (err) {
+            console.error('Error writing JSON file:', err);
+            return res.status(500).send(err.message);
+          }
+    
+          res.json({ message: 'Registro eliminado exitosamente' });
+        });
+      } else {
+        res.status(404).send('Registro no encontrado');
+      }
+    });
+  });
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

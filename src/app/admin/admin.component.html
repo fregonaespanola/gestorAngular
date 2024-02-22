@@ -10,7 +10,7 @@
           <th>Entidad</th>
           <th>Mes</th>
           <th>Aportación</th>
-          <th colspan="2">Total</th>
+          <th colspan="3">Total</th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +22,7 @@
           <td>{{ item.monthly_report }}</td>
           <td>{{ item.total }}</td>
           <td><button class="edit-sing" (click)="editarRegistro(item)">🖍</button></td>
+          <td><button class="eliminar" (click)="eliminarRegistro(item.id)">❌</button></td>
         </tr>
       </tbody>
     </table>
@@ -123,7 +124,6 @@
           </div>
         </div>
         <div class="botones">
-            <button class="eliminar" >Eliminar</button>
             <button class="guardar" type="submit">Guardar</button>
             
         </div>

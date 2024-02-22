@@ -134,15 +134,13 @@
     font-size: 20px;
   }
 
-  .formeditcolor .eliminar{
-    margin-left: 2%;
-    background-color: #FF9A9A;
-    border: 3px solid #FF4242;
-    width: 100px;
-    height: 40px;
+  .eliminar{
+    background-color: #e43333;
+    width: 30px;
+    height: 30px;
     color: black;
     border: none;
-    font-size: 20px;
+    font-size: 15px;
   }
 
   .mostrar{

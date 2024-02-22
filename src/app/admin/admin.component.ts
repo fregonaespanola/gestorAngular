@@ -91,6 +91,16 @@ export class AdminComponent implements OnInit {
       });
   }
 
+  eliminarRegistro(id: number) {
+    this.http.delete<any>(`http://localhost:3100/delete-register/${id}`)
+      .subscribe((response: any) => {
+        console.log('Registro eliminado:', response);
+        this.refresh();
+      }, (error: any) => {
+        console.error('Error al enviar la solicitud de eliminación:', error);
+      });
+  }
+  
   toggleFormVisibility() {
     this.showForm = !this.showForm;
   }

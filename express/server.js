@@ -92,6 +92,20 @@ app.get('/get-user-entity/:username', (req, res) => {
         res.json(matchingUsers);
     });
 });
+
+
+app.get('/get-all-users', (req, res) => {
+    fs.readFile(path.join(__dirname, '..', 'jsons', 'data.json'), 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading JSON file:', err);
+            return res.status(500).send(err.message);
+        }
+
+        const users = JSON.parse(data);
+
+        res.json(users);
+    });
+});
 app.post('/save-petition', (req, res) => {
     const filePath = path.join(__dirname, '..', 'jsons', 'petitions.json');
     const petitionData = req.body;
@@ -179,7 +193,59 @@ app.post('/add-register', (req, res) => {
     });
 });
 
+app.put('/update-register', (req, res) => {
+    const updatedRegister = req.body;
+  
+    fs.readFile(path.join(__dirname, '..', 'jsons', 'data.json'), 'utf8', (err, data) => {
+      if (err) {
+        console.error('Error reading JSON file:', err);
+        return res.status(500).send(err.message);
+      }
+  
+      let registers = JSON.parse(data);
+  
+      const index = registers.findIndex(register => register.id === updatedRegister.id);
+      if (index !== -1) {
+        const act = {
+            name: registers[index].name,
+            username: updatedRegister.username,
+            surname: registers[index].surname,
+            promoter: updatedRegister.promoter,
+            entity: updatedRegister.entity,
+            month: updatedRegister.month,
+            total: (parseInt(registers[index].total) - parseInt(registers[index].monthly_report)  + parseInt(updatedRegister.monthly_report)).toString(), // Convertir la suma a string
+            monthly_report: updatedRegister.monthly_report
+        }; 
+        console.log(act.total);
+        registers[index] = act;
+  
+        const updatedTotal = parseInt(registers[index].total);
 
+        console.log(updatedTotal)
+
+            /*// Iterar sobre todos los registros y actualizar los totales si el nombre de usuario coincide
+            registers.forEach((record, idx) => {
+                if (record.username === updatedRegister.username && parseInt(record.total) > updatedTotal) {
+                    console.log("entra "+record.month)
+                    // Calcular el nuevo total
+                    const newTotal = parseInt(record.total) - parseInt(record.monthly_report) + updatedTotal;
+                    registers[idx].total = newTotal.toString();
+                }
+            });*/
+
+        fs.writeFile(path.join(__dirname, '..', 'jsons', 'data.json'), JSON.stringify(registers, null, 2), 'utf8', err => {
+          if (err) {
+            console.error('Error writing JSON file:', err);
+            return res.status(500).send(err.message);
+          }
+  
+          res.json(updatedRegister);
+        });
+      } else {
+        res.status(404).send('Registro no encontrado');
+      }
+    });
+});
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

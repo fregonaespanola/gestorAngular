@@ -1,1 +1,133 @@
-<p>admin works!</p>
+<div class="container">
+    <h1>Plataforma Digital de Consulta</h1>
+    <h2>Centa de Administrador: {{ username}}</h2>
+    <h3>Información de Registros</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Promotor</th>
+          <th>Entidad</th>
+          <th>Mes</th>
+          <th>Aportación</th>
+          <th colspan="2">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td>{{ item.username }}</td>
+          <td>{{ item.promoter }}</td>
+          <td>{{ item.entity }}</td>
+          <td>{{ item.month }}</td>
+          <td>{{ item.monthly_report }}</td>
+          <td>{{ item.total }}</td>
+          <td><button class="edit-sing" (click)="editarRegistro(item)">🖍</button></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <button class="mostrar" (click)="toggleFormVisibility()">+</button>
+    
+    <form class="form" *ngIf="showForm" (ngSubmit)="aniadirRegistro()">
+      <h1 class="formh1">Añadir Aportación</h1>
+      <div class="formcolor">
+      <div class="form-in">
+        <div class="row">
+          <div class="label">
+            <label for="usuario">Usuario:</label>
+          </div>
+          <div class="input">
+            <input type="text" [(ngModel)]="addRegister.username" name="usuario">
+          </div>
+        </div>
+        <div class="row">
+          <div class="label">
+            <label for="promotor">Promotor:</label>
+          </div>
+          <div class="input">
+            <input type="text" [(ngModel)]="addRegister.promoter" name="promotor">
+          </div>
+        </div>
+        <div class="row">
+            <div class="label">
+              <label for="promotor">Entidad:</label>
+            </div>
+            <div class="input">
+              <input type="text" [(ngModel)]="addRegister.entity" name="promotor">
+            </div>
+          </div>
+        <div class="row">
+          <div class="label">
+            <label for="aportacion">Mes:</label>
+          </div>
+          <div class="input">
+            <input type="text" [(ngModel)]="addRegister.month" name="mes">
+          </div>
+        </div>
+        <div class="row">
+          <div class="label">
+            <label for="aportacion">Aportación:</label>
+          </div>
+          <div class="input">
+            <input type="text" [(ngModel)]="addRegister.monthly_report" name="aportacion">
+          </div>
+        </div>
+      </div>
+      <button type="submit">Guardar</button>
+    </div>
+    </form>
+
+    <form class="form" id="editform" (ngSubmit)="guardarEditadoRegistro()">
+        <h1 class="formedith1">Editar Registro</h1>
+        <div class="formeditcolor">
+        <div class="form-in">
+          <div class="row">
+            <div class="label">
+              <label for="usuario">Usuario:</label>
+            </div>
+            <div class="input">
+              <input type="text" [(ngModel)]="editRegister.username" name="usuario">
+            </div>
+          </div>
+          <div class="row">
+            <div class="label">
+              <label for="promotor">Promotor:</label>
+            </div>
+            <div class="input">
+              <input type="text" [(ngModel)]="editRegister.promoter" name="promotor">
+            </div>
+          </div>
+          <div class="row">
+              <div class="label">
+                <label for="promotor">Entidad:</label>
+              </div>
+              <div class="input">
+                <input type="text" [(ngModel)]="editRegister.entity" name="entity">
+              </div>
+            </div>
+          <div class="row">
+            <div class="label">
+              <label for="aportacion">Mes:</label>
+            </div>
+            <div class="input">
+              <input type="text" [(ngModel)]="editRegister.month" name="mes">
+            </div>
+          </div>
+          <div class="row">
+            <div class="label">
+              <label for="aportacion">Aportación:</label>
+            </div>
+            <div class="input">
+              <input type="text" [(ngModel)]="editRegister.monthly_report" name="aportacion">
+            </div>
+          </div>
+        </div>
+        <div class="botones">
+            <button class="eliminar" >Eliminar</button>
+            <button class="guardar" type="submit">Guardar</button>
+            
+        </div>
+      </div>
+      </form>
+    
+    </div>

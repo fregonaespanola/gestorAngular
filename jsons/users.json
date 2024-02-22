@@ -11,5 +11,10 @@
         "username": "BBA",
         "password": "ee",
         "role": "entity"
+    },
+    {
+        "username": "admin",
+        "password": "admin",
+        "role": "admin"
     }
 ]

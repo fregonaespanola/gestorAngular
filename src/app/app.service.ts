@@ -25,4 +25,7 @@ export class AppService {
     getUserByEntity(username: string): Observable<CitizenData[]> {
       return this.http.get<CitizenData[]>(`${this.apiUrl}/get-user-entity/${username}`);
     }
+    getAllUsers(): Observable<CitizenData[]> {
+      return this.http.get<CitizenData[]>(`${this.apiUrl}/get-all-users`);
+    }
 }

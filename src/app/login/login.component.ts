@@ -27,6 +27,10 @@ export class LoginComponent {
           localStorage.setItem('username', data.username);
           this.router.navigate(['/entity']);
         }
+        if (data.role === 'admin') {
+          localStorage.setItem('username', data.username);
+          this.router.navigate(['/admin']);
+        }
       }
     });
   }

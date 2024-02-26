@@ -60,6 +60,11 @@
     margin-bottom: -1px;
   }
 
+  .erroneo {
+    color: #ff0000;
+    font-weight: bold;
+  }
+
   .formcolor{
     background-color: #D2FFD1;
     padding-bottom: 20px;

@@ -272,6 +272,48 @@ app.delete('/delete-register/:id', (req, res) => {
       }
     });
   });
+
+  app.get('/compare-data-with-admin-data', (req, res) => {
+    // Leer el contenido de data.json y datos_admin.json
+    fs.readFile(path.join(__dirname, '..', 'jsons', 'data.json'), 'utf8', (err, dataJson) => {
+        if (err) {
+            console.error('Error al leer data.json:', err);
+            res.status(500).send('Error interno del servidor');
+            return;
+        }
+
+        fs.readFile(path.join(__dirname, '..', 'jsons', 'datos_admin.json'), 'utf8', (err, adminDataJson) => {
+            if (err) {
+                console.error('Error al leer datos_admin.json:', err);
+                res.status(500).send('Error interno del servidor');
+                return;
+            }
+
+            try {
+                const data = JSON.parse(dataJson);
+                const adminData = JSON.parse(adminDataJson);
+
+                // Comparar los datos y encontrar discrepancias
+                const discrepancies = [];
+                adminData.forEach(adminItem => {
+                    const matchingDataItem = data.find(dataItem => dataItem.id === adminItem.id);
+                    if (matchingDataItem && (matchingDataItem.total !== adminItem.total || matchingDataItem.monthly_report !== adminItem.monthly_report)) {
+                        discrepancies.push(adminItem);
+                    }
+                });
+
+                // Devolver las discrepancias encontradas al cliente Angular
+                res.json(discrepancies);
+            } catch (parseError) {
+                console.error('Error al analizar los datos JSON:', parseError);
+                res.status(500).send('Error interno del servidor');
+            }
+        });
+    });
+});
+
+
+  
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

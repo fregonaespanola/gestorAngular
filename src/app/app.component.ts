@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'gestorAngular';
+  getRoleRoute() {
+    const role = localStorage.getItem('role');
+    return '/' + role;
+  }
 }

@@ -11,26 +11,12 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   user: User = new User();
   constructor(private appService: AppService, private router: Router) { }
-
   login() {
     this.appService.login(this.user).subscribe((data: User) => {
-      if (data) {
-        if (data.role === 'citizen') {
-          localStorage.setItem('username', data.username);
-          this.router.navigate(['/citizen']);
-        }
-        if (data.role === 'promoter') {
-          localStorage.setItem('username', data.username);
-          this.router.navigate(['/promoter']);
-        }
-        if (data.role === 'entity') {
-          localStorage.setItem('username', data.username);
-          this.router.navigate(['/entity']);
-        }
-        if (data.role === 'admin') {
-          localStorage.setItem('username', data.username);
-          this.router.navigate(['/admin']);
-        }
+      if (data && data.role) {
+        localStorage.setItem('username', data.username);
+        localStorage.setItem('role', data.role);
+        this.router.navigate(['/', data.role]);
       }
     });
   }

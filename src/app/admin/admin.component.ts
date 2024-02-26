@@ -27,12 +27,32 @@ export class AdminComponent implements OnInit {
       (data: CitizenData[]) => {
         console.log(data);
         this.data = data;
+        this.compareDataWithAdminData();
       },
       (error: any) => {
         console.error('Error al obtener la información de todos los usuarios:', error);
       }
     );
   }
+
+  compareDataWithAdminData() {
+    this.http.get<any>('http://localhost:3100/compare-data-with-admin-data').subscribe(
+        (discrepancies: CitizenData[]) => {
+            // Manejar las discrepancias encontradas
+            console.log('Discrepancias encontradas:', discrepancies);
+            discrepancies.forEach(adminItem => {
+                const mismatchedRow = document.getElementById(`row-${adminItem.id}`);
+                if (mismatchedRow) {
+                    mismatchedRow.classList.add('erroneo');
+                }
+            });
+        },
+        (error: any) => {
+            console.error('Error al obtener las discrepancias:', error);
+        }
+    );
+}
+
 
   aniadirRegistro() {
     this.http.post<any>('http://localhost:3100/add-register', this.addRegister)

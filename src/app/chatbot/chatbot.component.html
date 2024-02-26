@@ -1,7 +1,10 @@
-<div *ngFor="let qa of questions">
-    <button (click)="showAnswer(qa.answer)">{{ qa.question }}</button>
-</div>
-
-<div>
-    <p>{{ currentAnswer }}</p>
+<div class="container">
+    <div class="questions">
+        <div class="chat" *ngFor="let qa of questions">
+            <button (click)="showAnswer(qa.answer)">{{ qa.question }}</button>
+        </div>
+    </div>
+    <div class="answers">
+        <p>{{ currentAnswer }}</p>
+    </div>
 </div>

@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Esto centra verticalmente en toda la altura de la ventana */
+    height: 100vh;
   }
   
 
@@ -47,4 +47,18 @@
   tr td{
     background-color: #A1C7FF;
     border-top: 5px solid white;
+  }
+
+  .chat {
+    width: 500px;
+    display: block;
+    align-items: center;
+  }
+
+  .titulo-chat{
+    margin-bottom:0px;
+    width: 500px;
+    background-color: rgb(94, 94, 94);
+    text-align: center;
+    font-size: 30px;
   }

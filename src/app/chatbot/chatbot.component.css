@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #bebebe;
+}
+
+.questions {
+    flex-grow: 1;
+    margin-right: 20px;
+}
+
+.answers {
+    width: 400px;
+}
+
+button{
+    border: 0px;
+    background-color: #242424;
+    color: white;
+    margin-top:2px;
+    width: 150px;
+}
+
+button:hover{
+    border: 0px;
+    background-color: #e0e0e0;
+    color: black;
+    margin-top:2px;
+}

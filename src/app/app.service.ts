@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../environment/environment';
 import { Observable } from 'rxjs';
 import { CitizenData } from './classes/citizen-data';
+import { QuestionAnswer } from './classes/QuestionAnswer';
 
 
 @Injectable({
@@ -27,5 +28,8 @@ export class AppService {
     }
     getAllUsers(): Observable<CitizenData[]> {
       return this.http.get<CitizenData[]>(`${this.apiUrl}/get-all-users`);
+    }
+    getChat(): Observable<QuestionAnswer[]> {
+      return this.http.get<QuestionAnswer[]>(`${this.apiUrl}/chatbot`);
     }
 }
